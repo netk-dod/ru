@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>НЭТК - День открытых дверей 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Общие стили с гармоничной цветовой палитрой */
+        :root {
+            --primary: #2c3e50;        /* Темно-синий */
+            --secondary: #34495e;       /* Серо-синий */
+            --accent: #e67e22;          /* Теплый оранжевый */
+            --accent-light: #f39c12;     /* Светло-оранжевый */
+            --text-dark: #2c3e50;        /* Темный текст */
+            --text-light: #ecf0f1;        /* Светлый текст */
+            --background: #ecf0f1;        /* Светлый фон */
+            --card-bg: #ffffff;            /* Белый для карточек */
+            --success: #27ae60;            /* Зеленый */
+            --error: #c0392b;               /* Красный */
+            --gradient-start: #2980b9;      /* Синий для градиента */
+            --gradient-end: #16a085;         /* Бирюзовый */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            color: var(--text-dark);
+            animation: bodyFadeIn 1.5s ease;
+        }
+
+        @keyframes bodyFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка - адаптивная с анимацией */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 25px 15px 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            border-radius: 0 0 20px 20px;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Круглые кнопки сверху с анимацией */
+        .top-circles {
+            display: flex;
+            gap: 8px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            padding: 5px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 101;
+            animation: fadeInScale 1.2s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        .circle-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .circle-btn i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .circle-btn:hover {
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.5);
+        }
+
+        .circle-btn:hover i {
+            transform: rotate(360deg);
+        }
+
+        .circle-tooltip {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .circle-btn:hover .circle-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: -30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInLeft 1s ease 0.2s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            transition: transform 0.4s ease, border-color 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--accent-light);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .logo-title:hover {
+            color: var(--accent);
+        }
+
+        .logo-subtitle {
+            font-size: 13px;
+            color: var(--secondary);
+            line-height: 1.3;
+            max-width: 220px;
+        }
+
+        .header-contacts {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: slideInRight 1s ease 0.2s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .header-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 6px 12px;
+            background: rgba(230, 126, 34, 0.1);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .header-contact-item:hover::before {
+            left: 100%;
+        }
+
+        .header-contact-item i {
+            color: var(--accent);
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .header-contact-item:hover {
+            color: var(--accent);
+            background: rgba(230, 126, 34, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .header-contact-item:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Анимированный заголовок ДЕНЬ ОТКРЫТЫХ ДВЕРЕЙ */
+        .hero-title {
+            text-align: center;
+            margin: 20px 0 10px;
+            padding: 20px 10px;
+            animation: fadeInUp 1.5s ease 0.3s both;
+        }
+
+        .hero-title h1 {
+            font-size: clamp(32px, 8vw, 58px);
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 var(--accent), 6px 6px 0 rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+            line-height: 1.2;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-title .sub-hero {
+            font-size: clamp(18px, 4vw, 24px);
+            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            animation: fadeIn 2s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 0 var(--accent), 6px 6px 0 rgba(0,0,0,0.2);
+            }
+            to {
+                text-shadow: 5px 5px 0 var(--accent-light), 8px 8px 0 rgba(0,0,0,0.3);
+            }
+        }
+
+        /* Основной контент с анимацией */
+        .left-text {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0 30px;
+            color: var(--text-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent);
+            animation: fadeInScale 1s ease 0.4s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .left-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .main-title {
+            font-size: clamp(22px, 5vw, 30px);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: clamp(15px, 4vw, 18px);
+            color: var(--secondary);
+            opacity: 0.9;
+        }
+
+        /* Заголовок с датой */
+        .event-date-badge {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 20px;
+            border-radius: 60px;
+            margin: 30px auto 40px;
+            max-width: 600px;
+            font-size: clamp(22px, 5vw, 28px);
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3);
+            animation: pulse 2s infinite, fadeInScale 1s ease 0.5s both;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 15px 40px rgba(230, 126, 34, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3); }
+        }
+
+        .blurred-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(230, 126, 34, 0.3);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: slideInUp 1s ease 0.6s both;
+            transition: all 0.3s ease;
+        }
+
+        .blurred-box:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(230, 126, 34, 0.2);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .box-text {
+            font-size: clamp(20px, 4vw, 26px);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .box-subtext {
+            font-size: clamp(15px, 3.5vw, 18px);
+            color: var(--secondary);
+        }
+
+        /* Секция специальностей */
+        .specialties-section {
+            padding: 20px 0 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 40px 0 30px;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .section-subtitle {
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: slideInLeft 0.8s ease 0.8s both;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 6vw, 38px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: slideInRight 0.8s ease 0.9s both;
+        }
+
+        .section-description {
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        .specialties-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .specialty-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(230, 126, 34, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            opacity: 0;
+            animation: cardFadeIn 0.8s ease forwards;
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Задержки для каждой карточки */
+        .specialty-card:nth-child(1) { animation-delay: 0.2s; }
+        .specialty-card:nth-child(2) { animation-delay: 0.3s; }
+        .specialty-card:nth-child(3) { animation-delay: 0.4s; }
+        .specialty-card:nth-child(4) { animation-delay: 0.5s; }
+        .specialty-card:nth-child(5) { animation-delay: 0.6s; }
+        .specialty-card:nth-child(6) { animation-delay: 0.7s; }
+        .specialty-card:nth-child(7) { animation-delay: 0.8s; }
+        .specialty-card:nth-child(8) { animation-delay: 0.9s; }
+        .specialty-card:nth-child(9) { animation-delay: 1.0s; }
+        .specialty-card:nth-child(10) { animation-delay: 1.1s; }
+        .specialty-card:nth-child(11) { animation-delay: 1.2s; }
+
+        .specialty-card:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(230, 126, 34, 0.3);
+            border-color: var(--accent);
+        }
+
+        .specialty-image {
+            width: 200px;
+            min-width: 200px;
+            height: auto;
+            object-fit: cover;
+            border-right: 4px solid var(--accent);
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+
+        .specialty-card:hover .specialty-image {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .specialty-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            transition: all 0.3s ease;
+        }
+
+        .specialty-code {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(230, 126, 34, 0.1);
+            padding: 5px 15px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .specialty-card:hover .specialty-code {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .specialty-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.4;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .specialty-card:hover .specialty-title {
+            color: var(--accent);
+        }
+
+        .specialty-description {
+            font-size: 14px;
+            color: var(--secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .specialty-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: fit-content;
+            min-width: 180px;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialty-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .specialty-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .specialty-btn:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.4);
+        }
+
+        .specialty-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .specialty-btn:hover i {
+            transform: translateX(5px) rotate(10deg);
+        }
+
+        /* Модальное окно */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 15px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--accent);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            color: var(--error);
+            background: rgba(192, 57, 43, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-right: 30px;
+        }
+
+        .modal-subtitle {
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(230, 126, 34, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: slideInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+        .form-group:nth-child(6) { animation-delay: 0.6s; }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1);
+            transform: scale(1.02);
+        }
+
+        .form-group textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .form-submit:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .form-submit:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(230, 126, 34, 0.4);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-submit:disabled::before {
+            display: none;
+        }
+
+        /* Уведомление об успешной отправке */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            animation: slideInRight 0.5s ease;
+            border-left: 4px solid white;
+        }
+
+        .notification i {
+            font-size: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .notification.show {
+            display: flex;
+        }
+
+        .form-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .consent-group {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .consent-group:hover {
+            background: #f0f0f0;
+            transform: scale(1.02);
+        }
+
+        .consent-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-weight: normal;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .consent-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--accent);
+            transition: transform 0.2s ease;
+        }
+
+        .consent-group input[type="checkbox"]:checked {
+            transform: scale(1.1);
+        }
+
+        .consent-group small {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.4;
+            display: block;
+            margin-top: 8px;
+            padding-left: 32px;
+        }
+
+        /* Футер */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 1.3s both;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            animation: slideInRight 1s ease 1.5s both;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInScale 1s ease 1.4s both;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .footer-title {
+            font-size: clamp(26px, 6vw, 34px);
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .footer-title:hover {
+            color: var(--accent);
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0 auto 20px;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .footer-divider:hover {
+            width: 100px;
+        }
+
+        .help-message {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            border-left: 4px solid var(--accent);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .help-message:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .help-message p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .help-message p:hover {
+            transform: translateX(5px);
+            color: var(--accent-light);
+        }
+
+        .help-message strong {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Адаптация для телефонов */
+        @media (max-width: 768px) {
+            #header {
+                padding: 60px 15px 12px 15px;
+            }
+            
+            .top-circles {
+                gap: 5px;
+                padding: 4px 12px;
+                top: 8px;
+            }
+            
+            .circle-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+            
+            .circle-btn i {
+                font-size: 14px;
+            }
+            
+            .logo-image {
+                width: 45px;
+                height: 45px;
+                border-width: 2px;
+            }
+            
+            .logo-title {
+                font-size: 18px;
+            }
+            
+            .logo-subtitle {
+                font-size: 11px;
+                max-width: 160px;
+            }
+            
+            .header-contacts {
+                gap: 8px;
+            }
+            
+            .header-contact-item {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+            
+            .header-contact-item i {
+                font-size: 12px;
+            }
+            
+            .hero-title {
+                margin: 10px 0 5px;
+                padding: 10px 5px;
+            }
+            
+            .specialty-card {
+                flex-direction: column;
+            }
+            
+            .specialty-image {
+                width: 100%;
+                height: 180px;
+                border-right: none;
+                border-bottom: 4px solid var(--accent);
+            }
+            
+            .specialty-btn {
+                width: 100%;
+            }
+            
+            .modal-content {
+                padding: 25px 20px;
+            }
+            
+            .modal-title {
+                font-size: 22px;
+            }
+            
+            .notification {
+                left: 20px;
+                right: 20px;
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-contacts {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+            
+            .header-contact-item {
+                justify-content: center;
+            }
+            
+            .specialty-content {
+                padding: 20px;
+            }
+            
+            .specialty-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <div class="top-circles">
+            <a href="https://t.me/netk1957" target="_blank" class="circle-btn">
+                <i class="fab fa-telegram-plane"></i>
+                <span class="circle-tooltip">Telegram</span>
+            </a>
+            <a href="https://vk.com/netk_arzamaz" target="_blank" class="circle-btn">
+                <i class="fab fa-vk"></i>
+                <span class="circle-tooltip">ВКонтакте</span>
+            </a>
+            <a href="https://netk.nnov.ru" target="_blank" class="circle-btn">
+                <i class="fas fa-globe"></i>
+                <span class="circle-tooltip">Наш сайт</span>
+            </a>
+        </div>
+
+        <div class="logo">
+            <img src="https://img.hhcdn.ru/employer-logo/7386449.png" alt="НЭТК" class="logo-image">
+            <div class="logo-text">
+                <span class="logo-title">НЭТК</span>
+                <span class="logo-subtitle">Нижегородский экономико‑технологический колледж</span>
+            </div>
+        </div>
+        
+        <div class="header-contacts">
+            <a href="tel:+78314271432" class="header-contact-item">
+                <i class="fas fa-phone"></i>
+                7-14-32
+            </a>
+            <a href="mailto:atpk-itc@yandex.ru" class="header-contact-item">
+                <i class="fas fa-envelope"></i>
+                atpk-itc@yandex.ru
+            </a>
+        </div>
+    </div>
+    
+    <!-- АНИМИРОВАННЫЙ ЗАГОЛОВОК -->
+    <div class="hero-title">
+        <h1>ДЕНЬ ОТКРЫТЫХ ДВЕРЕЙ</h1>
+        <div class="sub-hero">НИЖЕГОРОДСКИЙ ЭКОНОМИКО-ТЕХНОЛОГИЧЕСКИЙ КОЛЛЕДЖ</div>
+    </div>
+    
+    <div id="container">
+        <div id="content">
+            <div class="left-text">
+                <h1 class="main-title">ПРИГЛАШАЕМ АБИТУРИЕНТОВ И ИХ РОДИТЕЛЕЙ</h1>
+                <p class="subtitle">Познакомьтесь с колледжем, узнайте о специальностях и сделайте первый шаг к успешной карьере.</p>
+            </div>
+            
+            <div class="event-date-badge">
+                🗓️ 28 МАРТА 2026 · 11:00
+            </div>
+            
+            <div class="blurred-box">
+                <p class="box-text">Нижегородский экономико‑технологический колледж</p>
+                <p class="box-subtext">Более 50 лет готовим специалистов</p>
+            </div>
+            
+            <section class="specialties-section">
+                <div class="section-header">
+                    <h2 class="section-subtitle">НАШИ СПЕЦИАЛЬНОСТИ</h2>
+                    <h3 class="section-title">ВЫБЕРИ СВОЁ НАПРАВЛЕНИЕ</h3>
+                    <p class="section-description">
+                        Нажмите "Записаться" чтобы оставить заявку на день открытых дверей
+                    </p>
+                </div>
+                
+                <div class="specialties-grid">
+                    <!-- Специальность 1 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/5668470/pexels-photo-5668470.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Право" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">40.02.01</span>
+                            <h3 class="specialty-title">Право и организация социального обеспечения</h3>
+                            <p class="specialty-description">Подготовка специалистов для работы в органах социальной защиты, юридических отделах и судебных инстанциях.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 2 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Юриспруденция" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">40.02.04</span>
+                            <h3 class="specialty-title">Юриспруденция</h3>
+                            <p class="specialty-description">Углубленная подготовка юристов для правового сопровождения деятельности организаций и граждан.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 3 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/4386326/pexels-photo-4386326.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Финансы" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">38.02.06</span>
+                            <h3 class="specialty-title">Финансы</h3>
+                            <p class="specialty-description">Управление финансами, анализ деятельности, работа с банковскими продуктами и инвестициями.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 4 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/6863260/pexels-photo-6863260.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Экономика" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">38.02.01</span>
+                            <h3 class="specialty-title">Экономика и бухгалтерский учет (по отраслям)</h3>
+                            <p class="specialty-description">Подготовка бухгалтеров и экономистов для работы на предприятиях любых форм собственности.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 5 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/4491469/pexels-photo-4491469.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Коммерция" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">38.02.04</span>
+                            <h3 class="specialty-title">Коммерция (по отраслям)</h3>
+                            <p class="specialty-description">Организация торговли, логистика, маркетинг и управление продажами.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 6 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/5632383/pexels-photo-5632383.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Торговое дело" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">38.02.08</span>
+                            <h3 class="specialty-title">Торговое дело</h3>
+                            <p class="specialty-description">Работа в ритейле, управление торговыми точками, мерчандайзинг.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 7 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Программирование" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">09.02.07</span>
+                            <h3 class="specialty-title">Информационные системы и программирование</h3>
+                            <p class="specialty-description">Разработка и сопровождение информационных систем, программирование, работа с базами данных.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 8 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Разработка ПО" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">09.02.11</span>
+                            <h3 class="specialty-title">Разработка и управление программным обеспечением</h3>
+                            <p class="specialty-description">Углубленная подготовка разработчиков ПО, владеющих современными языками программирования.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 9 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Искусственный интеллект" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">09.02.13</span>
+                            <h3 class="specialty-title">Интеграция решений с применением технологий искусственного интеллекта</h3>
+                            <p class="specialty-description">Создание систем с элементами искусственного интеллекта и машинного обучения.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 10 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Туризм" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">43.02.16</span>
+                            <h3 class="specialty-title">Туризм и гостеприимство</h3>
+                            <p class="specialty-description">Работа в гостиничном и ресторанном бизнесе, туристических агентствах.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Специальность 11 -->
+                    <div class="specialty-card">
+                        <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Поварское дело" class="specialty-image">
+                        <div class="specialty-content">
+                            <span class="specialty-code">43.02.15</span>
+                            <h3 class="specialty-title">Поварское и кондитерское дело</h3>
+                            <p class="specialty-description">Творческая специальность для будущих шеф-поваров и кондитеров.</p>
+                            <button class="specialty-btn" onclick="openModal()">
+                                <i class="fas fa-calendar-check"></i> ЗАПИСАТЬСЯ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Модальное окно -->
+            <div class="modal-overlay" id="applicationModal">
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                    <h3 class="modal-title">Запись на день открытых дверей</h3>
+                    <div class="modal-subtitle">28 марта 2026, начало в 11:00</div>
+                    
+                    <form id="applicationForm" onsubmit="return false;">
+                        <div class="form-group">
+                            <label>Фамилия *</label>
+                            <input type="text" id="lastname" required placeholder="Иванов">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Имя *</label>
+                            <input type="text" id="firstname" required placeholder="Иван">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Отчество</label>
+                            <input type="text" id="middlename" placeholder="Иванович">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" required placeholder="ivanov@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7 (999) 123-45-67">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Комментарий</label>
+                            <textarea id="comment" placeholder="Ваши вопросы..."></textarea>
+                        </div>
+                        
+                        <div class="consent-group">
+                            <label>
+                                <input type="checkbox" id="consent" required>
+                                <span>Я согласен на обработку персональных данных *</span>
+                            </label>
+                            <small>Нажимая кнопку, вы даете согласие на обработку данных</small>
+                        </div>
+                        
+                        <button type="button" class="form-submit" onclick="submitForm()" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> ОТПРАВИТЬ ЗАЯВКУ
+                        </button>
+                        
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Уведомление об успешной отправке -->
+            <div class="notification" id="successNotification">
+                <i class="fas fa-check-circle"></i>
+                <span>✅ Заявка успешно отправлена! Мы свяжемся с вами.</span>
+            </div>
+            
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-header">
+                        <h2 class="footer-title">ГДЕ НАС НАЙТИ</h2>
+                        <div class="footer-divider"></div>
+                    </div>
+                    
+                    <div class="help-message">
+                        <p><strong>Адрес:</strong> г. Арзамас, проспект Ленина, 200</p>
+                        <p><strong>Проезд:</strong> автобусы №1, 2, 5 до остановки "Техникум"</p>
+                        <p><strong>Телефон:</strong> 7-14-32</p>
+                        <p><strong>Email:</strong> atpk-itc@yandex.ru</p>
+                        <p><strong>Сайт:</strong> netk.nnov.ru</p>
+                        <p><strong>Режим работы:</strong> пн-пт с 9:00 до 18:00</p>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <div class="footer-copyright">
+                            © 2026 Нижегородский экономико-технологический колледж
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById('applicationModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('formMessage').style.display = 'none';
+        document.getElementById('formMessage').className = 'form-message';
+    }
+    
+    function closeModal() {
+        document.getElementById('applicationModal').classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('applicationForm').reset();
+        document.getElementById('formMessage').style.display = 'none';
+        document.getElementById('formMessage').className = 'form-message';
+    }
+    
+    async function submitForm() {
+        // Проверка обязательных полей
+        const lastname = document.getElementById('lastname').value.trim();
+        const firstname = document.getElementById('firstname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const consent = document.getElementById('consent').checked;
+        
+        if (!lastname || !firstname || !email) {
+            showMessage('Заполните все обязательные поля', 'error');
+            return;
+        }
+        
+        if (!consent) {
+            showMessage('Необходимо дать согласие на обработку данных', 'error');
+            return;
+        }
+        
+        // Блокируем кнопку
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ОТПРАВКА...';
+        
+        // Собираем данные
+async function submitForm() {
+    // Проверка обязательных полей
+    const lastname = document.getElementById('lastname').value.trim();
+    const firstname = document.getElementById('firstname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const consent = document.getElementById('consent').checked;
+    
+    if (!lastname || !firstname || !email) {
+        showMessage('Заполните все обязательные поля', 'error');
+        return;
+    }
+    
+    if (!consent) {
+        showMessage('Необходимо дать согласие на обработку данных', 'error');
+        return;
+    }
+    
+    // Собираем данные для письма
+    const middlename = document.getElementById('middlename').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const comment = document.getElementById('comment').value.trim();
+    
+    // Формируем тему письма
+    const subject = `Заявка на День открытых дверей НЭТК`;
+    
+    // Формируем тело письма
+    const body = `Новая заявка на день открытых дверей
+
+ФИО: ${lastname} ${firstname} ${middlename || ''}
+Email: ${email}
+Телефон: ${phone || 'не указан'}
+Комментарий: ${comment || 'нет'}
+
+Согласие на обработку персональных данных: ДА
+Дата отправки: ${new Date().toLocaleString('ru-RU')}`;
+    
+    // Создаем ссылку mailto (ЗДЕСЬ МЕНЯЙТЕ ПОЧТУ)
+    const mailtoLink = `nrabinin13@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Открываем почтовый клиент
+    window.location.href = mailtoLink;
+    
+    // Показываем уведомление об успехе
+    const notification = document.getElementById('successNotification');
+    notification.classList.add('show');
+    
+    // Закрываем модальное окно через 3 секунды
+    setTimeout(() => {
+        notification.classList.remove('show');
+        closeModal();
+    }, 3000);
+}
+    
+    function showMessage(text, type) {
+        const msgDiv = document.getElementById('formMessage');
+        msgDiv.textContent = text;
+        msgDiv.className = 'form-message ' + type;
+    }
+    
+    document.getElementById('applicationModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>
+
+</body>
+</html>
